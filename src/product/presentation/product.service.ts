@@ -1,14 +1,14 @@
 import { Inject, Injectable, Res } from '@nestjs/common';
-import { AddProduct } from '../domain/usecases/add-product';
+import { AddProductInterface } from '../domain/usecases/add-product.interface';
 import { AddProductDTO } from '../dto/AddProduct.dto';
-import { ResponseDto } from 'src/dto/Response.dto';
+import { ResponseDto } from '../../dto/Response.dto';
 import { AddProductModel, ProductModel } from '../domain/models/product-model';
 
 @Injectable()
 export class ProductService {
   constructor(
-    @Inject(AddProduct)
-    private readonly addProduct: AddProduct,
+    @Inject(AddProductInterface)
+    private readonly addProduct: AddProductInterface,
   ) {}
 
   async add(

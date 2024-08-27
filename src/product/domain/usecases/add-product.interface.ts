@@ -1,7 +1,7 @@
 import { AddProductModel, ProductModel } from '../models/product-model';
 
-export interface AddProduct {
+export interface AddProductInterface {
   add: (product: AddProductModel) => Promise<ProductModel | null>;
 }
 
-export const AddProduct = Symbol('AddProduct');
+export const AddProductInterface = Symbol('AddProductInterface');

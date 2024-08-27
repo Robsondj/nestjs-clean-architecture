@@ -1,14 +1,14 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { AddProduct } from '../../domain/usecases/add-product';
-import { AddProductRepositoryInterface } from '../interfaces/add-product-repository-interface';
-import { FindProductByTitleRepositoryInterface } from '../interfaces/find-product-by-title-repository-interface';
+import { AddProductInterface } from '../../../domain/usecases/add-product.interface';
+import { AddProductRepositoryInterface } from '../../interfaces/add-product-repository.interface';
+import { FindProductByTitleRepositoryInterface } from '../../interfaces/find-product-by-title-repository.interface';
 import {
   AddProductModel,
   ProductModel,
 } from 'src/product/domain/models/product-model';
 
 @Injectable()
-export class DbAddProduct implements AddProduct {
+export class AddProduct implements AddProductInterface {
   constructor(
     @Inject(AddProductRepositoryInterface)
     private readonly addRepository: AddProductRepositoryInterface,

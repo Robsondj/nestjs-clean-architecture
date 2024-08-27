@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { AddProductRepositoryInterface } from 'src/product/application/interfaces/add-product-repository-interface';
-import { FindProductByTitleRepositoryInterface } from 'src/product/application/interfaces/find-product-by-title-repository-interface';
+import { AddProductRepositoryInterface } from '../../../application/interfaces/add-product-repository.interface';
+import { FindProductByTitleRepositoryInterface } from '../../../application/interfaces/find-product-by-title-repository.interface';
 import {
   AddProductModel,
   ProductModel,
-} from 'src/product/domain/models/product-model';
-import { ProductEntity } from 'src/product/infra/db/typeorm/entities/product.entity';
+} from '../../../domain/models/product-model';
+import { ProductEntity } from '../typeorm/entities/product.entity';
 import { Equal, Repository } from 'typeorm';
 
 @Injectable()
