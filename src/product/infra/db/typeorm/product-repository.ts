@@ -8,12 +8,14 @@ import {
 } from '../../../domain/models/product-model';
 import { ProductEntity } from '../typeorm/entities/product.entity';
 import { Equal, Repository } from 'typeorm';
+import { FindAllProductsRepositoryInterface } from 'src/product/application/interfaces/find-all-products-repository.interface';
 
 @Injectable()
 export class ProductRepository
   implements
     AddProductRepositoryInterface,
-    FindProductByTitleRepositoryInterface
+    FindProductByTitleRepositoryInterface,
+    FindAllProductsRepositoryInterface
 {
   constructor(
     @InjectRepository(ProductEntity)
@@ -28,5 +30,9 @@ export class ProductRepository
     return (await this.repository.find({
       where: { title: Equal(title) },
     })) as any as ProductModel[];
+  }
+
+  async findAll(): Promise<ProductModel[]> {
+    return (await this.repository.find()) as any as ProductModel[];
   }
 }

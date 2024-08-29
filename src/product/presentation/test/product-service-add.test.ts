@@ -1,13 +1,9 @@
 import { ProductModel } from 'src/product/domain/models/product-model';
 
-import { AddProductInterface } from 'src/product/domain/usecases/add-product.interface';
-import { AddProductDTO } from '../dto/AddProduct.dto';
-import { ProductService } from './product.service';
-import { ResponseDto } from '../../dto/Response.dto';
-
-class AddProductInterfaceStub implements AddProductInterface {
-  add = jest.fn();
-}
+import { AddProductDTO } from '../../dto/AddProduct.dto';
+import { ProductService } from '../product.service';
+import { ResponseDto } from '../../../dto/Response.dto';
+import { AddProductInterfaceStub, makeSut } from './makeSut';
 
 describe('ProductService.add() add method', () => {
   let productService: ProductService;
@@ -15,8 +11,8 @@ describe('ProductService.add() add method', () => {
   let productDTO: AddProductDTO;
 
   beforeEach(() => {
-    addProductStub = new AddProductInterfaceStub();
-    productService = new ProductService(addProductStub);
+    ({ productServiceNew: productService, addProductStubNew: addProductStub } =
+      makeSut());
     productDTO = {
       title: 'New Product',
       price: 100,

@@ -13,11 +13,11 @@ export class AddProduct implements AddProductInterface {
     @Inject(AddProductRepositoryInterface)
     private readonly addRepository: AddProductRepositoryInterface,
     @Inject(FindProductByTitleRepositoryInterface)
-    private readonly findByTitlerepository: FindProductByTitleRepositoryInterface,
+    private readonly findByTitleRepository: FindProductByTitleRepositoryInterface,
   ) {}
 
   async add(product: AddProductModel): Promise<ProductModel | null> {
-    const dbProduct = await this.findByTitlerepository.findByTitle(
+    const dbProduct = await this.findByTitleRepository.findByTitle(
       product.title,
     );
     if (dbProduct.length) {
