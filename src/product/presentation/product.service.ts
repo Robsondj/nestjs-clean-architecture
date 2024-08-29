@@ -7,12 +7,13 @@ import { GetProductsInterface } from '../domain/usecases/get-products.interface'
 
 @Injectable()
 export class ProductService {
+  private readonly logger = new Logger(ProductService.name);
+
   constructor(
     @Inject(AddProductInterface)
     private readonly addProduct: AddProductInterface,
     @Inject(GetProductsInterface)
     private readonly getProducts: GetProductsInterface,
-    private readonly logger = new Logger(ProductService.name),
   ) {}
 
   async add(
